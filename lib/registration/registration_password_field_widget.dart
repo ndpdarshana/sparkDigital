@@ -31,6 +31,7 @@ class RegistrationPasswordFieldWidget extends StatelessWidget {
           ),
           onChanged: (password) => context.read<RegistrationBloc>().add(RegistrationPasswordChanged(password)),
           onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(confirmPasswordFocusNode),
+          obscureText: true,
           focusNode: passwordFocusNode,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,

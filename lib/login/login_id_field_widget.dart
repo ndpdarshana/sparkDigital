@@ -11,7 +11,11 @@ class LoginIdFieldWidget extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           autocorrect: false,
-          decoration: InputDecoration(labelText: 'Email'),
+          decoration:
+              InputDecoration(labelText: 'Email', errorText: state.email.invalid ? 'Email must be valid' : null),
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          onChanged: (value) => context.read<LoginBloc>().add(LoginIdChanged(value)),
         );
       },
     );

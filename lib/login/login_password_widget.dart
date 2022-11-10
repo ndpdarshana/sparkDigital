@@ -11,7 +11,12 @@ class LoginPasswrodWidget extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           autocorrect: false,
-          decoration: InputDecoration(labelText: 'Password'),
+          decoration: InputDecoration(
+            labelText: 'Password',
+            errorText: state.password.invalid ? 'Password must be valid' : null,
+          ),
+          obscureText: true,
+          onChanged: (value) => context.read<LoginBloc>().add(LoginPasswordChanged(value)),
         );
       },
     );

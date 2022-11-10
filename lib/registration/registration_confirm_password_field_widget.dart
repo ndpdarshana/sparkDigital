@@ -34,6 +34,7 @@ class RegistrationConfirmPasswordFieldWidget extends StatelessWidget {
           decoration: InputDecoration(labelText: 'Confirm Password', errorText: errorText),
           onChanged: (confirmPassword) =>
               context.read<RegistrationBloc>().add(RegistrationConfirmPasswordChanged(confirmPassword)),
+          obscureText: true,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.done,
         );
