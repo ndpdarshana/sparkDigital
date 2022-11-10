@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:sparkdigital/bloc/app_bloc.dart';
+import 'package:sparkdigital/bloc_messaging_service.dart';
 import 'package:sparkdigital/features/user/models/app_user.dart';
 import 'package:sparkdigital/registration/validators/birth_year_input.dart';
 import 'package:sparkdigital/registration/validators/confirm_password_input.dart';
@@ -14,9 +17,9 @@ part 'registration_event.dart';
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  final AppBloc appBloc;
+  late StreamSubscription<BlocMessage> _streamSubscription;
 
-  RegistrationBloc(this.appBloc) : super(const RegistrationState()) {
+  RegistrationBloc() : super(const RegistrationState()) {
     on<RegistrationNameChanged>(_onRegistrationNameChanged);
     on<RegistrationBirthYearChanged>(_onRegistrationBirthYearChanged);
     on<RegistrationGenderChanged>(_onRegistrationGenderChanged);
@@ -25,6 +28,19 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     on<RegistrationConfirmPasswordChanged>(_onRegistrationConfirmPasswordChanged);
     on<RegistrationUserAgreementChanged>(_onRegistrationUserAgreementChanged);
     on<RegistrationSubmitted>(_onRegistrationSubmitted);
+    on<RegistrationFailure>(_onRegistrationFailure);
+
+    _streamSubscription = BlocMessagingService().subcribe()!.listen((message) {
+      if (message.to.keys.contains(RegistrationBloc)) {
+        add(message.to[RegistrationBloc]);
+      }
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _streamSubscription.cancel();
+    return super.close();
   }
 
   void _onRegistrationNameChanged(RegistrationNameChanged event, Emitter<RegistrationState> emit) {
@@ -90,8 +106,11 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       );
 
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
-
-      appBloc.add(AppUserRegistered(appUser, state.password.value!));
+      BlocMessagingService().publish(BlocMessage({AppBloc: AppUserRegistered(appUser, state.password.value!)}));
     }
+  }
+
+  void _onRegistrationFailure(RegistrationFailure event, Emitter<RegistrationState> emit) {
+    emit(state.copyWith(status: FormzStatus.submissionFailure, errorMessage: event.errorMessage));
   }
 }

@@ -64,3 +64,12 @@ class RegistrationConfirmPasswordChanged extends RegistrationEvent {
 class RegistrationUserAgreementChanged extends RegistrationEvent {}
 
 class RegistrationSubmitted extends RegistrationEvent {}
+
+class RegistrationFailure extends RegistrationEvent {
+  final String errorMessage;
+
+  const RegistrationFailure(this.errorMessage);
+
+  @override
+  List<Object?> get props => [errorMessage];
+}
