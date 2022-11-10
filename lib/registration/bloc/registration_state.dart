@@ -9,6 +9,7 @@ class RegistrationState extends Equatable {
   final PasswordInput password;
   final ConfirmPasswordInput confirmPassword;
   final bool isUserAgreementChecked;
+  final String? errorMessage;
 
   const RegistrationState({
     this.status = FormzStatus.pure,
@@ -19,10 +20,11 @@ class RegistrationState extends Equatable {
     this.password = const PasswordInput.pure(),
     this.confirmPassword = const ConfirmPasswordInput.pure(),
     this.isUserAgreementChecked = false,
+    this.errorMessage,
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         status,
         name,
         birthYear,
@@ -31,6 +33,7 @@ class RegistrationState extends Equatable {
         password,
         confirmPassword,
         isUserAgreementChecked,
+        errorMessage,
       ];
 
   RegistrationState copyWith({
@@ -42,6 +45,7 @@ class RegistrationState extends Equatable {
     PasswordInput? password,
     ConfirmPasswordInput? confirmPassword,
     bool? isUserAgreementChecked,
+    String? errorMessage,
   }) =>
       RegistrationState(
         status: status ?? this.status,
@@ -52,5 +56,6 @@ class RegistrationState extends Equatable {
         password: password ?? this.password,
         confirmPassword: confirmPassword ?? this.confirmPassword,
         isUserAgreementChecked: isUserAgreementChecked ?? this.isUserAgreementChecked,
+        errorMessage: errorMessage ?? this.errorMessage,
       );
 }

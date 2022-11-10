@@ -67,6 +67,14 @@ class AuthRepository {
       throw AuthSignoutException();
     }
   }
+
+  Future<void> forgotPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (_) {
+      throw AuthException();
+    }
+  }
 }
 
 class AuthInvalidUsernameOrPasswordException implements Exception {}

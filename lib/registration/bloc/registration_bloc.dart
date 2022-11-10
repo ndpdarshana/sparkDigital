@@ -91,7 +91,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-      // appBloc.add(AppUserRegistered(appUser, state.password.value!));
+      appBloc.add(AppUserRegistered(appUser, state.password.value!));
     }
   }
 }
