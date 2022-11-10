@@ -20,7 +20,8 @@ class RegistrationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Let\' Begin', style: Theme.of(context).textTheme.headline1),
-                RegistrationFormWidget(),
+                const SizedBox(height: 16),
+                const RegistrationFormWidget(),
                 Row(
                   children: [
                     Text('Already have a profile?'),

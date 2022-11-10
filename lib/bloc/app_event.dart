@@ -20,6 +20,15 @@ class AppStatusChanged extends AppEvent {
   List<Object?> get props => [user];
 }
 
+class AppUserRegistered extends AppEvent {
+  final AppUser user;
+
+  const AppUserRegistered(this.user);
+
+  @override
+  List<Object?> get props => [user];
+}
+
 class AppSignoutRequested extends AppEvent {
   const AppSignoutRequested();
 

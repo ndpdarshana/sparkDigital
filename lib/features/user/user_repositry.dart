@@ -29,6 +29,7 @@ class UserRepository {
   }
 
   Future<void> createUser(AppUser user) async {
+    if (user.id == null) throw UserIdNullException();
     try {
       await _userCollection.doc(user.id).set(user.toMap());
     } catch (e) {
@@ -36,6 +37,8 @@ class UserRepository {
     }
   }
 }
+
+class UserIdNullException implements Exception {}
 
 class UserNotAavailableException implements Exception {}
 

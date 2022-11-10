@@ -3,13 +3,13 @@ import 'package:equatable/equatable.dart';
 enum Gender { male, female }
 
 class AppUser extends Equatable {
-  final String id;
+  final String? id;
   final int birthYear;
   final Gender gender;
   final String email;
 
   const AppUser({
-    required this.id,
+    this.id,
     required this.birthYear,
     required this.gender,
     required this.email,
@@ -44,4 +44,11 @@ class AppUser extends Equatable {
       'gender': genderStr,
     };
   }
+
+  AppUser copyWith({String? id}) => AppUser(
+        id: id ?? id,
+        birthYear: birthYear,
+        gender: gender,
+        email: email,
+      );
 }

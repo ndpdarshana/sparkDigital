@@ -15,18 +15,23 @@ class RegistrationFormWidget extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          RegistrationNameFieldWidget(),
-          RegistrationBirthYearFieldWidget(),
-          RegistrationGenderFieldWidget(),
-          RegistrationEmailFieldWidget(),
-          RegistrationPasswordFieldWidget(),
-          RegistrationConfirmPasswordFieldWidget(),
-          RagistrationUserAgreementWidget(),
+          const RegistrationNameFieldWidget(),
+          const SizedBox(height: 16),
+          const RegistrationBirthYearFieldWidget(),
+          const SizedBox(height: 16),
+          const RegistrationGenderFieldWidget(),
+          const SizedBox(height: 16),
+          const RegistrationEmailFieldWidget(),
+          const SizedBox(height: 16),
+          const RegistrationPasswordFieldWidget(),
+          const SizedBox(height: 16),
+          const RegistrationConfirmPasswordFieldWidget(),
+          const SizedBox(height: 16),
+          const RagistrationUserAgreementWidget(),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('Save'),
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
@@ -34,6 +39,7 @@ class RegistrationFormWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              child: const Text('Save'),
             ),
           ),
         ],
