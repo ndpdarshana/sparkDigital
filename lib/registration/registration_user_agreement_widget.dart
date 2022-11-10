@@ -12,7 +12,13 @@ class RagistrationUserAgreementWidget extends StatelessWidget {
         return Row(
           children: [
             Checkbox(value: false, onChanged: (value) {}),
-            Text('I have read the Terms of Use and Privacy Policy and I want to proceed.'),
+            Expanded(
+              child: Text(
+                'I have read the Terms of Use and Privacy Policy and I want to proceed.',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ),
           ],
         );
       },

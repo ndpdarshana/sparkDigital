@@ -10,7 +10,7 @@ class LoginRegisterNowWidget extends StatelessWidget {
       SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/register', (route) => false),
+          onPressed: () => Navigator.of(context).pushNamed('/register'),
           child: Text('Register'),
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(

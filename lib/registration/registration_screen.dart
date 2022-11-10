@@ -14,12 +14,24 @@ class RegistrationScreen extends StatelessWidget {
       create: (context) => RegistrationBloc(),
       child: Scaffold(
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Let\' Begin', style: Theme.of(context).textTheme.headline1),
-              RegistrationFormWidget(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Let\' Begin', style: Theme.of(context).textTheme.headline1),
+                RegistrationFormWidget(),
+                Row(
+                  children: [
+                    Text('Already have a profile?'),
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text('Login'),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

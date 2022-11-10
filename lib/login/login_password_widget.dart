@@ -11,6 +11,7 @@ class LoginPasswrodWidget extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           autocorrect: false,
+          decoration: InputDecoration(labelText: 'Password'),
         );
       },
     );
