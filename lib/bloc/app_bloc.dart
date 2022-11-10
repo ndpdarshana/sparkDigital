@@ -23,6 +23,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppUserRegistered>(_onAppUserRegistered);
     on<AppSignoutRequested>(_onAppSignoutRequested);
     _streamSubscription = _authRepository.user.listen((user) {
+      print('test');
       add(AppStatusChanged(user));
     });
   }

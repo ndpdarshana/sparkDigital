@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sparkdigital/app_theme.dart';
 import 'package:sparkdigital/bloc/app_bloc.dart';
 import 'package:sparkdigital/forgot_password/forgot_password_screen.dart';
+import 'package:sparkdigital/home/home_screen.dart';
 import 'package:sparkdigital/login/login_screen.dart';
 import 'package:sparkdigital/registration/registration_screen.dart';
 import 'package:sparkdigital/splash_screen.dart';
@@ -27,6 +28,8 @@ class App extends StatelessWidget {
               _navigator.pushNamedAndRemoveUntil('/', (route) => false);
             } else if (state.status == AppStatus.unauthenticated) {
               _navigator.pushNamedAndRemoveUntil('/login', (route) => false);
+            } else if (state.status == AppStatus.authenticated) {
+              _navigator.pushNamedAndRemoveUntil('/home', (route) => false);
             }
           },
           child: child,
@@ -47,6 +50,9 @@ class App extends StatelessWidget {
             break;
           case '/forgot_password':
             widget = const ForgotPasswordScreen();
+            break;
+          case '/home':
+            widget = const HomeScreen();
             break;
         }
 

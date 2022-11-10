@@ -9,7 +9,8 @@ class RegistrationFormSubmitButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RegistrationBloc, RegistrationState>(
-      buildWhen: (previous, current) => previous.status != current.status,
+      buildWhen: (previous, current) =>
+          previous.status != current.status || previous.isUserAgreementChecked != current.isUserAgreementChecked,
       builder: (context, state) {
         return ElevatedButton(
           onPressed: state.status == FormzStatus.valid && state.isUserAgreementChecked

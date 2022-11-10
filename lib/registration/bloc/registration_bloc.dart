@@ -89,7 +89,9 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
         email: state.email.value,
       );
 
-      appBloc.add(AppUserRegistered(appUser, state.password.value!));
+      emit(state.copyWith(status: FormzStatus.submissionInProgress));
+
+      // appBloc.add(AppUserRegistered(appUser, state.password.value!));
     }
   }
 }
