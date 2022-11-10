@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sparkdigital/app_theme.dart';
 import 'package:sparkdigital/bloc/app_bloc.dart';
+import 'package:sparkdigital/forgot_password/forgot_password_screen.dart';
 import 'package:sparkdigital/login/login_screen.dart';
+import 'package:sparkdigital/registration/registration_screen.dart';
 import 'package:sparkdigital/splash_screen.dart';
 
 class App extends StatelessWidget {
@@ -16,6 +19,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'SparkDigital',
       navigatorKey: _navigatorKey,
+      theme: AppThemeData.light(),
       builder: (context, child) {
         return BlocListener<AppBloc, AppState>(
           listener: (context, state) {
@@ -37,6 +41,12 @@ class App extends StatelessWidget {
             break;
           case '/login':
             widget = const LoginScreen();
+            break;
+          case '/register':
+            widget = const RegistrationScreen();
+            break;
+          case '/forgot_password':
+            widget = const ForgotPasswordScreen();
             break;
         }
 
