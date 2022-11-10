@@ -4,7 +4,7 @@ abstract class RegistrationEvent extends Equatable {
   const RegistrationEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class RegistrationNameChanged extends RegistrationEvent {
@@ -17,21 +17,21 @@ class RegistrationNameChanged extends RegistrationEvent {
 }
 
 class RegistrationBirthYearChanged extends RegistrationEvent {
-  final int birthYear;
+  final int? birthYear;
 
   const RegistrationBirthYearChanged(this.birthYear);
 
   @override
-  List<Object> get props => [birthYear];
+  List<Object?> get props => [birthYear];
 }
 
 class RegistrationGenderChanged extends RegistrationEvent {
-  final Gender gender;
+  final Gender? gender;
 
   const RegistrationGenderChanged(this.gender);
 
   @override
-  List<Object> get props => [gender];
+  List<Object?> get props => [gender];
 }
 
 class RegistrationEmailChanged extends RegistrationEvent {
@@ -60,3 +60,7 @@ class RegistrationConfirmPasswordChanged extends RegistrationEvent {
   @override
   List<Object> get props => [confirmPassword];
 }
+
+class RegistrationUserAgreementChanged extends RegistrationEvent {}
+
+class RegistrationSubmitted extends RegistrationEvent {}

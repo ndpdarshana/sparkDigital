@@ -8,11 +8,14 @@ class RagistrationUserAgreementWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RegistrationBloc, RegistrationState>(
+      buildWhen: (previous, current) => previous.isUserAgreementChecked != current.isUserAgreementChecked,
       builder: (context, state) {
         return Row(
           children: [
-            Checkbox(value: false, onChanged: (value) {}),
-            Expanded(
+            Checkbox(
+                value: state.isUserAgreementChecked,
+                onChanged: (_) => context.read<RegistrationBloc>().add(RegistrationUserAgreementChanged())),
+            const Expanded(
               child: Text(
                 'I have read the Terms of Use and Privacy Policy and I want to proceed.',
                 overflow: TextOverflow.ellipsis,

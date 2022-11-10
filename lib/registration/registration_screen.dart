@@ -16,22 +16,24 @@ class RegistrationScreen extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Let\' Begin', style: Theme.of(context).textTheme.headline1),
-                const SizedBox(height: 16),
-                const RegistrationFormWidget(),
-                Row(
-                  children: [
-                    Text('Already have a profile?'),
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text('Login'),
-                    ),
-                  ],
-                )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Let\' Begin', style: Theme.of(context).textTheme.headline1),
+                  const SizedBox(height: 16),
+                  RegistrationFormWidget(),
+                  Row(
+                    children: [
+                      const Text('Already have a profile?'),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Login'),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

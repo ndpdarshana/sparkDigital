@@ -8,24 +8,33 @@ import 'package:sparkdigital/registration/registration_password_field_widget.dar
 import 'package:sparkdigital/registration/registration_user_agreement_widget.dart';
 
 class RegistrationFormWidget extends StatelessWidget {
-  const RegistrationFormWidget({super.key});
+  RegistrationFormWidget({super.key});
+
+  final _birthYearFocusNode = FocusNode();
+  final _genderFocusNode = FocusNode();
+  final _emailFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
+  final _confirmPasswordFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
-          const RegistrationNameFieldWidget(),
+          RegistrationNameFieldWidget(birthYearFocusNode: _birthYearFocusNode),
           const SizedBox(height: 16),
-          const RegistrationBirthYearFieldWidget(),
+          RegistrationBirthYearFieldWidget(birthYearFocusNode: _birthYearFocusNode, genderFocusNode: _genderFocusNode),
           const SizedBox(height: 16),
-          const RegistrationGenderFieldWidget(),
+          RegistrationGenderFieldWidget(genderFocusNode: _genderFocusNode, emailFocusNode: _emailFocusNode),
           const SizedBox(height: 16),
-          const RegistrationEmailFieldWidget(),
+          RegistrationEmailFieldWidget(emailFocusNode: _emailFocusNode, passwordFocusNode: _passwordFocusNode),
           const SizedBox(height: 16),
-          const RegistrationPasswordFieldWidget(),
+          RegistrationPasswordFieldWidget(
+            passwordFocusNode: _passwordFocusNode,
+            confirmPasswordFocusNode: _confirmPasswordFocusNode,
+          ),
           const SizedBox(height: 16),
-          const RegistrationConfirmPasswordFieldWidget(),
+          RegistrationConfirmPasswordFieldWidget(confirmPasswordFocusNode: _confirmPasswordFocusNode),
           const SizedBox(height: 16),
           const RagistrationUserAgreementWidget(),
           SizedBox(
