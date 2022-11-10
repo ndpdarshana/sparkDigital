@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sparkdigital/bloc/app_bloc.dart';
 import 'package:sparkdigital/registration/bloc/registration_bloc.dart';
 import 'package:sparkdigital/registration/ragistrtion_form_widget.dart';
 
@@ -11,7 +12,7 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegistrationBloc(),
+      create: (context) => RegistrationBloc(context.read<AppBloc>()),
       child: Scaffold(
         body: SafeArea(
           child: Padding(

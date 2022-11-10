@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import 'package:sparkdigital/bloc/app_bloc.dart';
 import 'package:sparkdigital/features/user/models/app_user.dart';
 import 'package:sparkdigital/registration/validators/birth_year_input.dart';
 import 'package:sparkdigital/registration/validators/confirm_password_input.dart';
@@ -13,7 +14,9 @@ part 'registration_event.dart';
 part 'registration_state.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  RegistrationBloc() : super(const RegistrationState()) {
+  final AppBloc appBloc;
+
+  RegistrationBloc(this.appBloc) : super(const RegistrationState()) {
     on<RegistrationNameChanged>(_onRegistrationNameChanged);
     on<RegistrationBirthYearChanged>(_onRegistrationBirthYearChanged);
     on<RegistrationGenderChanged>(_onRegistrationGenderChanged);
@@ -77,5 +80,16 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     emit(state.copyWith(isUserAgreementChecked: !state.isUserAgreementChecked));
   }
 
-  void _onRegistrationSubmitted(RegistrationSubmitted event, Emitter<RegistrationState> emit) {}
+  void _onRegistrationSubmitted(RegistrationSubmitted event, Emitter<RegistrationState> emit) {
+    if (state.status == FormzStatus.valid && state.isUserAgreementChecked) {
+      final appUser = AppUser(
+        name: state.name.value!,
+        birthYear: state.birthYear.value!,
+        gender: state.gender.value!,
+        email: state.email.value,
+      );
+
+      appBloc.add(AppUserRegistered(appUser, state.password.value!));
+    }
+  }
 }

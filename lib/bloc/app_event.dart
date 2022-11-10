@@ -22,11 +22,12 @@ class AppStatusChanged extends AppEvent {
 
 class AppUserRegistered extends AppEvent {
   final AppUser user;
+  final String password;
 
-  const AppUserRegistered(this.user);
+  const AppUserRegistered(this.user, this.password);
 
   @override
-  List<Object?> get props => [user];
+  List<Object?> get props => [user, password];
 }
 
 class AppSignoutRequested extends AppEvent {

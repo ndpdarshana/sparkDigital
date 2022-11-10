@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sparkdigital/registration/registration_birth_year_field_widget.dart';
 import 'package:sparkdigital/registration/registration_confirm_password_field_widget.dart';
 import 'package:sparkdigital/registration/registration_email_field_widget.dart';
+import 'package:sparkdigital/registration/registration_form_submit_button_widget.dart';
 import 'package:sparkdigital/registration/registration_gender_field_widget.dart';
 import 'package:sparkdigital/registration/registration_name_field_widget.dart';
 import 'package:sparkdigital/registration/registration_password_field_widget.dart';
@@ -37,19 +38,9 @@ class RegistrationFormWidget extends StatelessWidget {
           RegistrationConfirmPasswordFieldWidget(confirmPasswordFocusNode: _confirmPasswordFocusNode),
           const SizedBox(height: 16),
           const RagistrationUserAgreementWidget(),
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                ),
-              ),
-              child: const Text('Save'),
-            ),
+            child: RegistrationFormSubmitButtonWidget(),
           ),
         ],
       ),

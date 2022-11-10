@@ -53,8 +53,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     }
   }
 
-  void _onAppUserRegistered(AppUserRegistered event, Emitter<AppState> emit) {
+  void _onAppUserRegistered(AppUserRegistered event, Emitter<AppState> emit) async {
     emit(AppState.registering(event.user));
+    unawaited(_authRepository.signup(email: event.user.email, password: event.password));
   }
 
   void _onAppSignoutRequested(AppSignoutRequested event, Emitter<AppState> emit) {
