@@ -1,4 +1,4 @@
-package com.example.sparkdigital
+package com.ndpdarshana.sparkdigital
 
 import io.flutter.embedding.android.FlutterActivity
 

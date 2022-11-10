@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sparkdigital">
+    package="com.ndpdarshana.sparkdigital">
    <application
         android:label="sparkdigital"
         android:name="${applicationName}"

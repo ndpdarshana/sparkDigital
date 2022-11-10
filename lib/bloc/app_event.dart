@@ -10,3 +10,19 @@ class AppLoaded extends AppEvent {
   @override
   List<Object> get props => [];
 }
+
+class AppStatusChanged extends AppEvent {
+  final User? user;
+
+  const AppStatusChanged(this.user);
+
+  @override
+  List<Object?> get props => [user];
+}
+
+class AppSignoutRequested extends AppEvent {
+  const AppSignoutRequested();
+
+  @override
+  List<Object?> get props => [];
+}

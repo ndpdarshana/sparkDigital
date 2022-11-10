@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "118291915196",
+    "project_id": "sparkdigital-45f0a",
+    "storage_bucket": "sparkdigital-45f0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118291915196:android:5344467fb9d391b2a44bb9",
+        "android_client_info": {
+          "package_name": "com.ndpdarshana.sparkdigital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118291915196-a65iohi6m6i6tt65vm9epv5jf5iddmrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrEcgraSMqoiBU1aP2hXF8ZTDN-fgs4v0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118291915196-a65iohi6m6i6tt65vm9epv5jf5iddmrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
